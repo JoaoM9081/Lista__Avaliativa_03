@@ -2,18 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 
-// Função que verifica se é uma letra
-int letra(char c)
-{
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
-
-// Função que verifica se é um dígito
-int digito(char c)
-{
-    return (c >= '0' && c <= '9');
-}
-
 // Função que verifica se o dia é válido
 int dia_valido(char *dia)
 {
@@ -38,7 +26,7 @@ int validar_placa(char *placa)
     {
         return 1;
     }
-    else if (tam_placa == 7 && letra(placa[0]) && letra(placa[1]) && letra(placa[2]) && letra(placa[4]) && digito(placa[3]) && digito(placa[5]) && digito(placa[6]))
+    else if (tam_placa == 7 && isalpha(placa[0]) && isalpha(placa[1]) && isalpha(placa[2]) && isalpha(placa[4]) && isdigit(placa[3]) && isdigit(placa[5]) && isdigit(placa[6]))
     {
         return 1;
     }
@@ -51,7 +39,7 @@ int ultimo_digito(char *placa)
     int comp_placa = strlen(placa);
     char ultimo_caractere = placa[comp_placa - 1];
 
-    if (digito(ultimo_caractere))
+    if (isdigit(ultimo_caractere))
     {
         return ultimo_caractere - '0';
     }
